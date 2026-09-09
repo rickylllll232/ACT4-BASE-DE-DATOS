@@ -1,0 +1,36 @@
++-----------------------+              +-----------------------+
+       |       EMPLEADOS       |              |        MEDICOS        |
+       +-----------------------+              +-----------------------+
+       | PK id_empleado        |              | PK id_medico          |
+       |    tipo_empleado      |              |    tipo_medico        |
+       |    nombre_completo    |              |    nombre_completo    |
+       |    direccion          |              |    num_cedula         |
+       |    telefono           |              |    telefono           |
+       |    ...                |              |    ...                |
+       +-----------+-----------+              +---+-------+-------+---+
+                   |                              |       |       |
+      (Si tipo_persona='Empleado')                |       |       |
+                   |                              |       |       |
+                   |       +----------------------+       |       +----------------------+
+                   |       |  (Si tipo_persona='Medico')  |                              |
+       +-----------v-------v---+              +-----------v-----------+      +-----------v-----------+
+       |       VACACIONES      |              |    HORARIOS_MEDICOS   |      |     SUSTITUCIONES     |
+       +-----------------------+              +-----------------------+      +-----------------------+
+       | PK id_vacacion        |              | PK id_horario         |      | PK id_sustitucion     |
+       | FK id_persona (Polim.)|              | FK id_medico          |      | FK id_medico          |
+       |    tipo_persona       |              |    dia_semana         |      |    fecha_alta         |
+       |    fecha_inicio       |              |    hora_inicio        |      |    fecha_baja         |
+       |    fecha_fin          |              |    hora_fin           |      +-----------------------+
+       +-----------------------+              +-----------------------+
+
+                                                          |
+                                              +-----------v-----------+
+                                              |       PACIENTES       |
+                                              +-----------------------+
+                                              | PK id_paciente        |
+                                              | FK id_medico          |
+                                              |    nombre_completo    |
+                                              |    fecha_ingreso      |
+                                              |    Historial_clinico  |
+                                              |    ...                |
+                                              +-----------------------+
